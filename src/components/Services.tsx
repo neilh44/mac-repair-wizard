@@ -72,43 +72,66 @@ const Services = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
               <Card 
                 key={index} 
-                className="group hover:shadow-medium transition-all duration-300 bg-gradient-card border-0 animate-slide-up"
+                className="group glass-card hover-lift hover-glow border-0 bg-gradient-card backdrop-blur-premium animate-slide-up overflow-hidden relative"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <CardHeader>
+                {/* Animated background gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-tech-green/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Floating orb effect */}
+                <div className="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-br from-accent/20 to-tech-green/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-float" />
+                
+                <CardHeader className="relative z-10">
                   <div className="flex items-start justify-between mb-4">
-                    <div className="bg-primary/10 p-3 rounded-lg group-hover:bg-primary/20 transition-colors">
-                      <IconComponent className="h-6 w-6 text-primary" />
+                    <div className="p-4 rounded-2xl bg-gradient-to-br from-accent/10 to-tech-green/10 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                      <IconComponent className="h-7 w-7 text-accent group-hover:text-tech-green transition-colors duration-300" />
                     </div>
                     {service.emergency && (
-                      <span className="bg-emergency-red text-white text-xs px-2 py-1 rounded-full font-medium">
+                      <span className="bg-emergency-red text-white text-xs px-3 py-1.5 rounded-full font-medium animate-pulse-glow shadow-lg">
                         Emergency Available
                       </span>
                     )}
                   </div>
-                  <CardTitle className="text-xl mb-2">{service.title}</CardTitle>
-                  <CardDescription className="text-base">
+                  <CardTitle className="text-xl mb-3 group-hover:text-accent transition-colors duration-300">
+                    {service.title}
+                  </CardTitle>
+                  <CardDescription className="text-base leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">
                     {service.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 mb-6">
+                <CardContent className="relative z-10">
+                  <ul className="space-y-3 mb-8">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-muted-foreground">
-                        <div className="w-1.5 h-1.5 bg-tech-green rounded-full mr-3 flex-shrink-0"></div>
-                        {feature}
+                      <li 
+                        key={featureIndex} 
+                        className="flex items-center text-sm text-muted-foreground group-hover:text-foreground/70 transition-all duration-300"
+                        style={{ 
+                          animationDelay: `${(index * 0.1) + (featureIndex * 0.05)}s`,
+                          animation: 'fadeIn 0.6s ease-out both'
+                        }}
+                      >
+                        <div className="w-2 h-2 bg-gradient-to-r from-tech-green to-accent rounded-full mr-3 flex-shrink-0 group-hover:scale-125 transition-transform duration-300" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {feature}
+                        </span>
                       </li>
                     ))}
                   </ul>
-                  <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                    Learn More
-                    <ArrowRight className="h-4 w-4 ml-2" />
+                  <Button 
+                    variant="outline" 
+                    className="w-full glass-button border-accent/20 hover:border-accent/40 hover:bg-accent/10 group-hover:scale-105 transition-all duration-300 relative overflow-hidden"
+                  >
+                    <span className="relative z-10 group-hover:text-accent transition-colors duration-300 flex items-center">
+                      Learn More
+                      <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-accent/10 to-tech-green/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </Button>
                 </CardContent>
               </Card>

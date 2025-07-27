@@ -1,62 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Premium Design System - Apple-inspired with modern glassmorphism 
+All colors MUST be HSL for consistency and theme support.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 220 14% 11%;
+    /* Core Background & Text */
+    --background: 0 0% 98%;
+    --foreground: 218 23% 15%;
 
+    /* Card & Surface Colors */
     --card: 0 0% 100%;
-    --card-foreground: 220 14% 11%;
-
+    --card-foreground: 218 23% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 220 14% 11%;
+    --popover-foreground: 218 23% 15%;
 
-    --primary: 220 13% 18%;
-    --primary-foreground: 0 0% 100%;
+    /* Premium Apple-Inspired Brand Colors */
+    --primary: 218 23% 23%;              /* Deep Space Gray */
+    --primary-foreground: 0 0% 98%;      /* Clean White */
+    --secondary: 220 14% 96%;            /* Silver Aluminum */
+    --secondary-foreground: 218 23% 15%; /* Dark Text */
+    --muted: 220 13% 91%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 213 94% 68%;               /* Electric Blue */
+    --accent-foreground: 0 0% 98%;
 
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 13% 18%;
-
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%;
-
-    --accent: 142 76% 36%;
-    --accent-foreground: 0 0% 100%;
-
+    /* Status Colors */
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
+    --destructive-foreground: 0 0% 98%;
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 220 13% 18%;
+    --ring: 213 94% 68%;
 
-    /* Custom Dr.Mac colors */
-    --apple-blue: 211 100% 48%;
-    --apple-gray: 220 9% 46%;
-    --tech-green: 142 76% 36%;
-    --emergency-red: 0 84% 60%;
+    /* Premium Apple Device Colors */
+    --apple-blue: 213 94% 68%;           /* iOS System Blue */
+    --apple-gray: 218 23% 23%;           /* Space Gray */
+    --apple-silver: 220 14% 96%;         /* Silver */
+    --tech-green: 145 63% 49%;           /* Success Green */
+    --tech-amber: 43 96% 56%;            /* Warning Amber */
+    --emergency-red: 0 84% 60%;          /* Emergency Red */
     
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(220 13% 18%) 0%, hsl(211 100% 48%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 14% 98%) 100%);
-    --gradient-accent: linear-gradient(90deg, hsl(142 76% 36%) 0%, hsl(142 70% 45%) 100%);
+    /* Premium Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(218 23% 23%) 0%, hsl(213 94% 68%) 50%, hsl(218 23% 23%) 100%);
+    --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%);
+    --gradient-accent: linear-gradient(90deg, hsl(145 63% 49%) 0%, hsl(213 94% 68%) 100%);
+    --gradient-glass: linear-gradient(145deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
+    --gradient-mesh: radial-gradient(circle at 25% 25%, hsl(213 94% 68% / 0.1) 0%, transparent 50%), 
+                     radial-gradient(circle at 75% 75%, hsl(145 63% 49% / 0.1) 0%, transparent 50%);
     
-    /* Shadows */
-    --shadow-soft: 0 2px 8px hsl(220 13% 18% / 0.08);
-    --shadow-medium: 0 4px 16px hsl(220 13% 18% / 0.12);
-    --shadow-strong: 0 8px 32px hsl(220 13% 18% / 0.16);
+    /* Premium Shadows & Effects */
+    --shadow-soft: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-strong: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --shadow-glow: 0 0 20px hsl(213 94% 68% / 0.3);
     
-    /* Animations */
+    /* Glassmorphism Effects */
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --backdrop-blur: 8px;
+    
+    /* Premium Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -76,33 +90,33 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
+    /* Dark Mode Colors */
+    --background: 218 23% 12%;
+    --foreground: 220 14% 96%;
+    --card: 218 23% 15%;
+    --card-foreground: 220 14% 96%;
+    --popover: 218 23% 15%;
+    --popover-foreground: 220 14% 96%;
+    --primary: 220 14% 96%;
+    --primary-foreground: 218 23% 12%;
+    --secondary: 218 20% 18%;
+    --secondary-foreground: 220 14% 96%;
+    --muted: 218 20% 18%;
+    --muted-foreground: 215 16% 65%;
+    --accent: 213 94% 68%;
+    --accent-foreground: 218 23% 12%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --destructive-foreground: 220 14% 96%;
+    --border: 218 20% 18%;
+    --input: 218 20% 18%;
+    --ring: 213 94% 68%;
+    
+    /* Dark Mode Glass Effects */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+    
+    /* Sidebar Dark Mode */
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -117,9 +131,141 @@ All colors MUST be HSL.
 @layer base {
   * {
     @apply border-border;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Components */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--backdrop-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-glass);
+  }
+  
+  .glass-card {
+    @apply glass rounded-2xl p-6;
+    background: var(--gradient-glass);
+  }
+  
+  .glass-button {
+    @apply glass rounded-xl px-6 py-3 font-medium;
+    transition: var(--transition-smooth);
+  }
+  
+  .glass-button:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Premium Animation Classes */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  .animate-slide-up-delayed {
+    animation: slideUp 0.8s ease-out 0.2s both;
+  }
+  
+  .animate-fade-in-delayed {
+    animation: fadeIn 0.6s ease-out 0.4s both;
+  }
+  
+  /* Hover Effects */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-strong);
+  }
+  
+  .hover-scale {
+    transition: var(--transition-spring);
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+  
+  .hover-glow:hover {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Premium Typography */
+  .text-gradient {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .text-hero {
+    @apply text-4xl md:text-6xl lg:text-7xl font-bold leading-tight;
+    letter-spacing: -0.02em;
+  }
+  
+  .text-section-title {
+    @apply text-2xl md:text-3xl lg:text-4xl font-semibold;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  /* Animation Keyframes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+  }
+  
+  @keyframes glow {
+    from { box-shadow: 0 0 10px hsl(var(--accent) / 0.5); }
+    to { box-shadow: 0 0 20px hsl(var(--accent) / 0.8), 0 0 30px hsl(var(--accent) / 0.4); }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Mesh Gradient Background */
+  .bg-mesh {
+    background: var(--gradient-mesh);
+  }
+  
+  /* Premium Backdrop Effects */
+  .backdrop-blur-premium {
+    backdrop-filter: blur(var(--backdrop-blur)) saturate(180%);
   }
 }
