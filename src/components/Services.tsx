@@ -6,154 +6,157 @@ import {
   Users, 
   Wrench, 
   Clock,
-  ArrowRight
+  ArrowRight,
+  CheckCircle,
+  Monitor,
+  Wifi,
+  Smartphone
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 const Services = () => {
   const services = [
     {
       icon: Laptop,
-      title: 'Mac Repair & Diagnostics',
-      description: 'Complete hardware and software repair for all Mac models. From screen replacements to logic board repairs.',
-      features: ['Hardware Diagnostics', 'Screen Replacement', 'Keyboard Repair', 'Logic Board Repair'],
-      emergency: true
+      title: 'MacBook Repair',
+      description: 'Professional MacBook repair with certified Apple parts and industry-leading warranty coverage.',
+      features: ['Screen Replacement', 'Keyboard Repair', 'Battery Service', 'Logic Board Repair'],
+      pricing: 'From $89',
+      urgent: false
+    },
+    {
+      icon: Monitor,
+      title: 'iMac & Mac Pro Service',
+      description: 'Complete desktop Mac repair with same-day service available for critical business systems.',
+      features: ['Display Repair', 'Hard Drive Upgrade', 'RAM Installation', 'Performance Tuning'],
+      pricing: 'From $129',
+      urgent: true
     },
     {
       icon: HardDrive,
-      title: 'Data Recovery & Transfer',
-      description: 'Professional data recovery services with high success rates. Secure data transfer and backup solutions.',
-      features: ['Hard Drive Recovery', 'SSD Data Recovery', 'Data Migration', 'Backup Solutions'],
-      emergency: true
+      title: 'Emergency Data Recovery',
+      description: 'Critical data recovery with 95% success rate. Emergency service available 24/7 for business clients.',
+      features: ['SSD Recovery', 'HDD Recovery', 'RAID Recovery', 'File Restoration'],
+      pricing: 'From $199',
+      urgent: true
+    },
+    {
+      icon: Wifi,
+      title: 'Network Setup & Security',
+      description: 'Enterprise-grade network setup with advanced security protocols and performance optimization.',
+      features: ['Wi-Fi Setup', 'Network Security', 'Router Configuration', 'Speed Optimization'],
+      pricing: 'From $149',
+      urgent: false
     },
     {
       icon: Shield,
-      title: 'Virus Removal & Security',
-      description: 'Complete malware removal and security optimization. Protect your Mac from future threats.',
-      features: ['Malware Removal', 'Security Audits', 'System Optimization', 'Antivirus Setup'],
-      emergency: false
+      title: 'Virus & Security Cleanup',
+      description: 'Complete system security audit with advanced malware removal and protection implementation.',
+      features: ['Malware Removal', 'System Cleanup', 'Security Audit', 'Protection Setup'],
+      pricing: 'From $99',
+      urgent: false
     },
     {
-      icon: Users,
-      title: 'Business IT Support',
-      description: 'Comprehensive Mac IT support for businesses. Network setup, maintenance, and ongoing support.',
-      features: ['Network Setup', 'Remote Support', 'System Maintenance', 'IT Consulting'],
-      emergency: false
-    },
-    {
-      icon: Wrench,
-      title: 'Preventive Maintenance',
-      description: 'Regular maintenance to keep your Mac running smoothly. Prevent issues before they occur.',
-      features: ['System Cleaning', 'Software Updates', 'Performance Optimization', 'Health Checks'],
-      emergency: false
-    },
-    {
-      icon: Clock,
-      title: 'Emergency Services',
-      description: 'Same-day emergency repair services for critical Mac issues. Available for urgent business needs.',
-      features: ['Same Day Service', '24/7 Emergency', 'On-Site Repair', 'Priority Support'],
-      emergency: true
+      icon: Smartphone,
+      title: 'iPhone & iPad Repair',
+      description: 'Authorized mobile device repair with genuine Apple parts and comprehensive warranty coverage.',
+      features: ['Screen Repair', 'Battery Replacement', 'Water Damage', 'Port Cleaning'],
+      pricing: 'From $79',
+      urgent: false
     }
   ];
 
   return (
-    <section className="py-20 bg-secondary/50">
+    <section className="py-24 lg:py-32 bg-apple-silver">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            Complete Mac Services
+        {/* Apple-Style Section Header */}
+        <div className="text-center mb-20 animate-fade-in">
+          <Badge variant="outline" className="mb-6 border-apple-blue text-apple-blue">
+            Professional Mac Services
+          </Badge>
+          <h2 className="text-section-title mb-8 text-apple-gray">
+            Expert Mac Repair & IT Services
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            From quick fixes to complex repairs, we provide comprehensive Mac services 
-            with transparent pricing and guaranteed satisfaction.
+          <p className="text-body text-muted-foreground max-w-4xl mx-auto">
+            From emergency repairs to complete system overhauls, our Apple-certified technicians provide 
+            comprehensive Mac repair and IT support services with industry-leading 90-day warranties.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {services.map((service, index) => {
-            const IconComponent = service.icon;
-            return (
-              <Card 
-                key={index} 
-                className="group glass-card hover-lift hover-glow border-0 bg-gradient-card backdrop-blur-premium animate-slide-up overflow-hidden relative"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {/* Animated background gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-tech-green/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                {/* Floating orb effect */}
-                <div className="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-br from-accent/20 to-tech-green/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-float" />
-                
-                <CardHeader className="relative z-10">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="p-4 rounded-2xl bg-gradient-to-br from-accent/10 to-tech-green/10 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                      <IconComponent className="h-7 w-7 text-accent group-hover:text-tech-green transition-colors duration-300" />
-                    </div>
-                    {service.emergency && (
-                      <span className="bg-emergency-red text-white text-xs px-3 py-1.5 rounded-full font-medium animate-pulse-glow shadow-lg">
-                        Emergency Available
-                      </span>
-                    )}
+        {/* Apple-Style Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-3xl p-8 shadow-strong hover-lift hover-glow group cursor-pointer animate-scale-in border border-white/20"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              {/* Service Icon with Apple-style treatment */}
+              <div className="mb-8">
+                <div className="relative">
+                  <div className="w-16 h-16 bg-gradient-to-br from-apple-blue to-purple-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 shadow-medium">
+                    <service.icon className="h-8 w-8 text-white" />
                   </div>
-                  <CardTitle className="text-xl mb-3 group-hover:text-accent transition-colors duration-300">
-                    {service.title}
-                  </CardTitle>
-                  <CardDescription className="text-base leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="relative z-10">
-                  <ul className="space-y-3 mb-8">
-                    {service.features.map((feature, featureIndex) => (
-                      <li 
-                        key={featureIndex} 
-                        className="flex items-center text-sm text-muted-foreground group-hover:text-foreground/70 transition-all duration-300"
-                        style={{ 
-                          animationDelay: `${(index * 0.1) + (featureIndex * 0.05)}s`,
-                          animation: 'fadeIn 0.6s ease-out both'
-                        }}
-                      >
-                        <div className="w-2 h-2 bg-gradient-to-r from-tech-green to-accent rounded-full mr-3 flex-shrink-0 group-hover:scale-125 transition-transform duration-300" />
-                        <span className="group-hover:translate-x-1 transition-transform duration-300">
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button 
-                    variant="outline" 
-                    className="w-full glass-button border-accent/20 hover:border-accent/40 hover:bg-accent/10 group-hover:scale-105 transition-all duration-300 relative overflow-hidden"
-                  >
-                    <span className="relative z-10 group-hover:text-accent transition-colors duration-300 flex items-center">
-                      Learn More
-                      <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-accent/10 to-tech-green/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </Button>
-                </CardContent>
-              </Card>
-            );
-          })}
+                  {service.urgent && (
+                    <Badge className="absolute -top-2 -right-2 bg-apple-orange text-white text-xs">
+                      Emergency
+                    </Badge>
+                  )}
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-apple-gray group-hover:text-apple-blue transition-colors duration-300">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground mb-6 leading-relaxed text-body">
+                  {service.description}
+                </p>
+              </div>
+
+              {/* Features List with Apple-style checkmarks */}
+              <div className="mb-8">
+                <h4 className="text-sm font-medium text-apple-gray mb-4">What's Included:</h4>
+                <ul className="space-y-3">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center text-sm text-muted-foreground">
+                      <CheckCircle className="h-4 w-4 text-apple-blue mr-3 flex-shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Pricing & CTA with Apple-style design */}
+              <div className="mt-auto pt-6 border-t border-muted">
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-2xl font-bold text-apple-blue">{service.pricing}</span>
+                  <Badge variant="secondary" className="text-xs bg-apple-silver text-apple-gray">
+                    {service.urgent ? 'Same Day' : '24-48 Hours'}
+                  </Badge>
+                </div>
+                <Button className="w-full bg-apple-blue hover:bg-apple-blue/90 text-white rounded-xl text-cta group-hover:shadow-glow transition-all duration-300">
+                  Get Free Quote
+                </Button>
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* CTA Section */}
-        <div className="text-center bg-gradient-hero rounded-2xl p-8 md:p-12 text-primary-foreground animate-scale-in">
-          <h3 className="text-2xl md:text-3xl font-bold mb-4">
-            Need Immediate Mac Repair?
-          </h3>
-          <p className="text-lg mb-6 text-primary-foreground/90">
-            Get a free diagnosis and same-day service for urgent repairs.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" asChild className="bg-tech-green hover:bg-tech-green/90 text-white border-0">
-              <Link to="/contact">Schedule Repair</Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
-              <a href="tel:(555) 123-4567">Call Emergency Line</a>
-            </Button>
+        {/* Apple-Style CTA Section */}
+        <div className="text-center mt-20 animate-fade-in">
+          <div className="bg-gradient-hero text-white max-w-5xl mx-auto rounded-3xl p-12 shadow-strong">
+            <h3 className="text-3xl font-bold mb-6">Need Emergency Mac Repair?</h3>
+            <p className="text-lg mb-8 text-white/90 max-w-2xl mx-auto">
+              Critical Mac issue affecting your work or business? We offer same-day emergency repair services 
+              with certified Apple technicians and priority scheduling.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Button size="lg" className="bg-white text-apple-gray hover:bg-apple-silver text-cta rounded-xl px-8 py-4" asChild>
+                <Link to="/contact">Schedule Emergency Repair</Link>
+              </Button>
+              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 text-cta rounded-xl px-8 py-4" asChild>
+                <a href="tel:(555) 123-4567">Call Emergency Line</a>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

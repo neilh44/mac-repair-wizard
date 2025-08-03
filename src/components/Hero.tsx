@@ -1,79 +1,88 @@
 import { Link } from 'react-router-dom';
-import { CheckCircle, Phone, Clock, Award } from 'lucide-react';
+import { CheckCircle, Phone, Clock, Award, Zap, Shield, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import heroImage from '@/assets/hero-mac-repair.jpg';
 
 const Hero = () => {
   return (
-    <section className="relative bg-gradient-hero text-primary-foreground py-20 lg:py-32 overflow-hidden">
-      {/* Premium Background Effects */}
-      <div className="absolute inset-0 bg-mesh opacity-50"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/20"></div>
+    <section className="relative bg-gradient-hero text-white py-24 lg:py-32 overflow-hidden">
+      {/* Apple-Style Background Effects */}
+      <div className="absolute inset-0 bg-mesh opacity-60"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-apple-blue/20 via-transparent to-purple-500/20"></div>
       
-      {/* Floating Background Elements */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl animate-float"></div>
-      <div className="absolute bottom-20 right-10 w-40 h-40 bg-tech-green/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+      {/* Floating Background Elements - Apple Style */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-apple-blue/15 rounded-full blur-3xl animate-float"></div>
+      <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-500/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* Emergency Service Banner */}
+      <div className="absolute top-0 left-0 right-0 bg-apple-orange text-white py-2 z-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <p className="text-sm font-medium flex items-center justify-center">
+            <Zap className="h-4 w-4 mr-2 animate-pulse" />
+            Emergency Mac Repair Available - Same Day Service - Call Now!
+          </p>
+        </div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="animate-fade-in">
-            {/* Premium Trust Badge */}
-            <Badge variant="secondary" className="mb-6 glass-card bg-tech-green/90 text-white border-0 hover-scale animate-glow">
+            {/* Apple-Style Trust Badge */}
+            <Badge variant="secondary" className="mb-8 glass-card bg-apple-blue/90 text-white border-0 hover-scale animate-glow">
               <Award className="h-4 w-4 mr-2 animate-pulse" />
-              38+ Years Mac Expertise
+              Authorized Apple Service Provider - 38+ Years
             </Badge>
 
-            {/* Premium Main Headline - Mobile Optimized */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6 animate-slide-up-delayed">
-              Mac Experts You Can
+            {/* Apple-Inspired Hero Headline */}
+            <h1 className="text-hero mb-8 animate-slide-up-delayed">
+              Your Mac.
               <span className="block text-gradient animate-fade-in-delayed">
-                Trust
+                Expertly Fixed.
               </span>
             </h1>
 
-            {/* Subheadline - Mobile Optimized */}
-            <p className="text-lg sm:text-xl md:text-2xl text-primary-foreground/90 mb-6 sm:mb-8 leading-relaxed">
-              Professional Mac repair, data recovery, and IT support. 
-              Same-day service available with our No Fix, No Fee guarantee.
+            {/* Modern Subheadline */}
+            <p className="text-body text-white/90 mb-8 max-w-lg">
+              Professional Mac repair with certified Apple technicians. 
+              Same-day service, lifetime warranty, and our industry-leading No Fix, No Fee guarantee.
             </p>
 
-            {/* Key Benefits */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            {/* Apple-Style Value Propositions */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
               {[
-                'Certified Mac Technicians',
-                'Same Day Service Available',
-                'No Fix, No Fee Guarantee',
-                'Data Recovery Specialists'
+                { text: 'Certified Apple Technicians', icon: Shield },
+                { text: 'Same Day Service Available', icon: Clock },
+                { text: 'No Fix, No Fee Guarantee', icon: CheckCircle },
+                { text: '90-Day Warranty Included', icon: Award }
               ].map((benefit, index) => (
                 <div 
                   key={index} 
-                  className="flex items-center text-primary-foreground/90"
+                  className="flex items-center text-white/95 animate-fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <CheckCircle className="h-5 w-5 text-tech-green mr-3 flex-shrink-0" />
-                  <span className="text-sm md:text-base">{benefit}</span>
+                  <benefit.icon className="h-5 w-5 text-apple-blue mr-3 flex-shrink-0" />
+                  <span className="text-base font-medium">{benefit.text}</span>
                 </div>
               ))}
             </div>
 
-            {/* Premium CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-8 animate-fade-in-delayed">
+            {/* Apple-Style CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-10 animate-fade-in-delayed">
               <Button 
                 size="lg" 
-                variant="secondary" 
                 asChild 
-                className="glass-button bg-tech-green/90 hover:bg-tech-green text-white border-0 hover-lift hover-glow group"
+                className="bg-apple-blue hover:bg-apple-blue/90 text-white border-0 hover-lift hover-glow group text-cta rounded-xl px-8 py-4 shadow-strong"
               >
                 <Link to="/contact" className="flex items-center justify-center">
-                  <span className="group-hover:scale-105 transition-transform duration-300">Get Free Diagnosis</span>
+                  <span className="group-hover:scale-105 transition-transform duration-300">Get Mac Repair Quote</span>
                 </Link>
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
                 asChild 
-                className="glass-button border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover-lift group"
+                className="glass-button border-white/30 text-white hover:bg-white/10 hover-lift group text-cta rounded-xl px-8 py-4"
               >
                 <a href="tel:530-386-2616" className="flex items-center justify-center">
                   <Phone className="h-5 w-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
@@ -82,55 +91,61 @@ const Hero = () => {
               </Button>
             </div>
 
-            {/* Premium Emergency Service Notice */}
-            <div className="glass-card bg-background/10 text-emergency-red rounded-2xl p-4 backdrop-blur-premium hover-scale animate-pulse-glow">
-              <div className="flex items-center">
-                <Clock className="h-5 w-5 mr-3 flex-shrink-0 animate-pulse" />
+            {/* Trust Indicators */}
+            <div className="glass-card bg-white/10 text-white rounded-xl p-6 backdrop-blur-premium hover-scale">
+              <div className="grid grid-cols-3 gap-6 text-center">
                 <div>
-                  <p className="font-semibold">Emergency Service Available</p>
-                  <p className="text-sm text-primary-foreground/80">Critical Mac issues? We offer same-day emergency repairs.</p>
+                  <div className="text-2xl font-bold text-apple-blue">1,500+</div>
+                  <div className="text-sm text-white/80">Macs Repaired</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-apple-blue">4.9★</div>
+                  <div className="text-sm text-white/80">Google Rating</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-apple-blue">38+</div>
+                  <div className="text-sm text-white/80">Years Experience</div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Hero Image */}
+          {/* Apple-Style Product Showcase */}
           <div className="relative animate-slide-up lg:animate-scale-in">
             <div className="relative z-10">
-              <img
-                src={heroImage}
-                alt="Professional Mac repair workspace with MacBook and repair tools"
-                className="w-full h-auto rounded-2xl shadow-strong"
-              />
-              
-              {/* Interactive Floating Stats */}
-              <div className="absolute -bottom-6 -left-6 glass-card bg-background/90 animate-bounce-in hover-lift cursor-pointer group" style={{ animationDelay: '0.8s' }}>
-                <div className="text-3xl font-bold text-primary group-hover:text-accent transition-colors duration-300">
-                  <span className="tabular-nums">1,500+</span>
-                </div>
-                <div className="text-sm text-muted-foreground group-hover:text-foreground/70 transition-colors duration-300">
-                  Macs Repaired
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-r from-accent/10 to-tech-green/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+              {/* Main Hero Image with Apple-style treatment */}
+              <div className="relative rounded-3xl overflow-hidden shadow-strong bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg border border-white/20">
+                <img
+                  src={heroImage}
+                  alt="Professional Mac repair workspace with MacBook and repair tools"
+                  className="w-full h-auto"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
               </div>
               
-              <div className="absolute -top-6 -right-6 glass-card bg-tech-green text-white animate-bounce-in hover-scale cursor-pointer group animate-glow" style={{ animationDelay: '1s' }}>
-                <div className="text-3xl font-bold group-hover:scale-110 transition-transform duration-300">
-                  <span className="tabular-nums">4.9</span>★
-                </div>
-                <div className="text-sm opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                  Google Rating
-                </div>
-              </div>
-              
-              {/* Interactive Trust Counter */}
-              <div className="absolute top-1/2 -left-8 transform -translate-y-1/2 glass-card bg-background/90 animate-float" style={{ animationDelay: '1.2s' }}>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-accent">
-                    <span className="tabular-nums">38+</span>
+              {/* Process Timeline Visualization */}
+              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-full max-w-md">
+                <div className="glass-card bg-white/95 text-apple-gray p-4 rounded-2xl shadow-strong">
+                  <div className="flex items-center justify-between text-sm font-medium">
+                    <div className="flex items-center">
+                      <div className="w-3 h-3 bg-apple-blue rounded-full mr-2"></div>
+                      <span>Diagnose</span>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-3 h-3 bg-apple-orange rounded-full mr-2"></div>
+                      <span>Quote</span>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-3 h-3 bg-tech-green rounded-full mr-2"></div>
+                      <span>Repair</span>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-3 h-3 bg-apple-blue rounded-full mr-2"></div>
+                      <span>Return</span>
+                    </div>
                   </div>
-                  <div className="text-xs text-muted-foreground whitespace-nowrap">
-                    Years Experience
+                  <div className="mt-2 text-xs text-muted-foreground text-center">
+                    Average repair time: 2.5 hours
                   </div>
                 </div>
               </div>
